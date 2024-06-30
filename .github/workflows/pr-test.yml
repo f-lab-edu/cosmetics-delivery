@@ -34,8 +34,8 @@ jobs:
           MYSQL_USER: dev_1234
           MYSQL_PASSWORD: 1234
           MYSQL_ROOT_PASSWORD: 1234
-          
-#1. 소스 체크 아웃 
+
+#1. 소스 체크 아웃
 #2. jdk 설정
     steps:
     - uses: actions/checkout@v4
@@ -71,9 +71,11 @@ jobs:
     - name: Initialize MySQL database
       run: |
         mysql -h 127.0.0.1 -u dev_1234 -p1234 < docker/db/mysql/init/init.sql
+
 #8. Gradle 클린 빌드 
     - name: Build with Gradle0
       run: ./gradlew clean build    
+
 #5. 테스트 실행  
     - name: 테스트를 실행 
       run: ./gradlew --info test
@@ -89,6 +91,6 @@ jobs:
 #      if: always()
 #      with:
 #        report_paths: 'module-api/build/test-results/test/TEST-*.xml'
-#8. Gradle 클린 빌드 
-    - name: Build with Gradle
-      run: ./gradlew clean build
+#8-1. Gradle 클린 빌드
+ #   - name: Build with Gradle
+ #     run: ./gradlew clean build

@@ -1,11 +1,12 @@
-package com.cosmetics.goods.controller;
+package com.cosmetics.controller;
 
-import com.cosmetics.api.goods.controller.GoodsController;
+import com.cosmetics.api.controller.GoodsController;
 import com.cosmetics.domain.exception.custom.CustomException;
 import com.cosmetics.domain.exception.error.GoodsErrorManagement;
 import com.cosmetics.domain.goods.dto.GoodsManagementRequest;
 import com.cosmetics.domain.goods.dto.item.GoodsItemManagementRequest;
 import com.cosmetics.domain.goods.service.GoodsService;
+import com.cosmetics.domain.sms.service.SmsService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.DisplayName;
@@ -25,7 +26,6 @@ import static org.hamcrest.CoreMatchers.anyOf;
 import static org.hamcrest.Matchers.is;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -41,6 +41,8 @@ public class GoodsControllerTest2 {
 
     @MockBean
     private GoodsService goodsService;
+    @MockBean
+    private SmsService smsService;
 
     @Autowired
     private MockMvc mockMvc;
